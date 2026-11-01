@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Data Buku Perpustakaan</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <div>
+                <h1>Master Data Buku Perpustakaan</h1>
+                <p>Kelola data koleksi buku perpustakaan.</p>
+            </div>
+
+            <a href="/buku/tambah" class="btn btn-primary">
+                + Tambah Buku
+            </a>
+        </header>
+
+        <main class="content">
+            <h2>Daftar Buku</h2>
+
+            <% if (daftarBuku.length === 0) { %>
+                <p>Belum ada data buku yang tersedia.</p>
+            <% } else { %>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Kode Buku</th>
+                                <th>Judul Buku</th>
+                                <th>Penulis</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Tanggal Terbit</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% daftarBuku.forEach((buku, index) => { %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><%= buku.kode_buku %></td>
+                                    <td><%= buku.judul_buku %></td>
+                                    <td><%= buku.penulis %></td>
+                                    <td><%= buku.kategori %></td>
+
+                                    <td>
+                                        Rp <%= Number(buku.harga).toLocaleString('id-ID') %>
+                                    </td>
+
+                                    <td>
+                                        <% if (buku.tanggal_terbit) { %>
+                                            <%= new Date(buku.tanggal_terbit).toLocaleDateString('id-ID') %>
+                                        <% } else { %>
+                                            -
+                                        <% } %>
+                                    </td>
+
+                                    <td>
+                                        <span class="status">
+                                            <%= buku.status %>
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a
+                                                href="/buku/edit/<%= buku.id_buku %>"
+                                                class="btn btn-edit">
+                                                Edit
+                                            </a>
+
+                                            <form
+                                                action="/buku/hapus/<%= buku.id_buku %>"
+                                                method="POST"
+                                                onsubmit="return confirm('Apakah kamu yakin ingin menghapus buku ini?')">
+
+                                                <button
+                                                    type="submit"
+                                                    class="btn btn-delete">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+            <% } %>
+        </main>
+
+        <footer class="footer">
+            <p>Sistem Manajemen Data Buku Perpustakaan</p>
+        </footer>
+    </div>
+
+</body>
+</html>

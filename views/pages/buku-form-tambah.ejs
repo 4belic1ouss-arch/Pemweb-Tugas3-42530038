@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Buku</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <div>
+                <h1>Tambah Data Buku</h1>
+                <p>Masukkan informasi buku baru ke dalam perpustakaan.</p>
+            </div>
+
+            <a href="/buku" class="btn btn-secondary">
+                Kembali
+            </a>
+        </header>
+
+        <main class="content">
+            <h2>Formulir Buku Baru</h2>
+
+            <% if (pesanError) { %>
+                <div class="error-message">
+                    <%= pesanError %>
+                </div>
+            <% } %>
+
+            <form action="/buku/tambah" method="POST" class="book-form">
+
+                <div class="form-group">
+                    <label for="kode_buku">Kode Buku</label>
+                    <input
+                        type="text"
+                        id="kode_buku"
+                        name="kode_buku"
+                        maxlength="20"
+                        value="<%= data.kode_buku || '' %>"
+                        placeholder="Contoh: BK004"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="judul_buku">Judul Buku</label>
+                    <input
+                        type="text"
+                        id="judul_buku"
+                        name="judul_buku"
+                        maxlength="150"
+                        value="<%= data.judul_buku || '' %>"
+                        placeholder="Masukkan judul buku"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="penulis">Penulis</label>
+                    <input
+                        type="text"
+                        id="penulis"
+                        name="penulis"
+                        maxlength="100"
+                        value="<%= data.penulis || '' %>"
+                        placeholder="Masukkan nama penulis"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">Kategori</label>
+                    <input
+                        type="text"
+                        id="kategori"
+                        name="kategori"
+                        maxlength="50"
+                        value="<%= data.kategori || '' %>"
+                        placeholder="Contoh: Novel, Sejarah, Teknologi"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea
+                        id="deskripsi"
+                        name="deskripsi"
+                        rows="4"
+                        placeholder="Masukkan deskripsi buku"><%= data.deskripsi || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="harga">Harga Buku (Rp)</label>
+                    <input
+                        type="number"
+                        id="harga"
+                        name="harga"
+                        min="1"
+                        step="0.01"
+                        value="<%= data.harga || '' %>"
+                        placeholder="Contoh: 85000"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tanggal_terbit">Tanggal Terbit</label>
+                    <input
+                        type="date"
+                        id="tanggal_terbit"
+                        name="tanggal_terbit"
+                        value="<%= data.tanggal_terbit || '' %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status Buku</label>
+                    <select id="status" name="status" required>
+                        <option value="">-- Pilih Status --</option>
+
+                        <option
+                            value="Tersedia"
+                            <%= data.status === 'Tersedia' ? 'selected' : '' %>>
+                            Tersedia
+                        </option>
+
+                        <option
+                            value="Dipinjam"
+                            <%= data.status === 'Dipinjam' ? 'selected' : '' %>>
+                            Dipinjam
+                        </option>
+
+                        <option
+                            value="Rusak"
+                            <%= data.status === 'Rusak' ? 'selected' : '' %>>
+                            Rusak
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/buku" class="btn btn-secondary">
+                        Batal
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Buku
+                    </button>
+                </div>
+
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>Sistem Manajemen Data Buku Perpustakaan</p>
+        </footer>
+    </div>
+
+</body>
+</html>
