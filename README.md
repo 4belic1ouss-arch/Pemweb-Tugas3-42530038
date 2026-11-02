@@ -124,3 +124,9 @@ File `.env` tidak disertakan dalam repository karena berisi konfigurasi pribadi 
 File skema basis data tersedia di root repository dengan nama `database.sql`.
 
 [Klik di sini untuk melihat database.sql](https://github.com/4belic1ouss-arch/Pemweb-Tugas3-42530038/blob/main/database.sql)
+
+## Link Video Demonstrasi
+
+Video demonstrasi aplikasi Master Data Buku Perpustakaan dapat ditonton melalui tautan berikut:
+
+[Klik di sini untuk menonton video demonstrasi](https://youtu.be/GeETc0-knmg?si=ovbiDp5xtRWU2EmZ)
