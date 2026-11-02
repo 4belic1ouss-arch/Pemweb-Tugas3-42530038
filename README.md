@@ -118,3 +118,9 @@ http://localhost:3000/buku
 Aplikasi menggunakan Prepared Statements dengan placeholder `?` pada query yang menerima input dinamis untuk membantu mencegah SQL Injection.
 
 File `.env` tidak disertakan dalam repository karena berisi konfigurasi pribadi database.
+
+## File Skema Basis Data
+
+File skema basis data tersedia di root repository dengan nama `database.sql`.
+
+[Klik di sini untuk melihat database.sql](https://github.com/4belic1ouss-arch/Pemweb-Tugas3-42530038/blob/main/database.sql)
